@@ -1,0 +1,154 @@
+##: import ScreenManager kivy.uix.screenmanager.ScreenManager
+##: import Screen kivy.uix.screenmanager.Screen
+##: import get_color_from_hex kivy.utils.get_color_from_hex
+##: import Screen1 screen
+##: import Screen2 screen
+##: import Screen3 screen
+
+<screen_manager>:
+    Screen1:
+    Screen2:
+    Screen3:
+        
+
+
+<Screen1>:
+    name:"screen_1"
+
+    MDBoxLayout:
+        orientation:'vertical'
+        spacing:0
+
+        MDToolbar:
+            title: "[color=7df99f][i]Detect Face[/i][/color]"
+            font_size: '18dp'
+            right_action_items:[["dots-vertical"]]
+            theme_text_color: 'Custom'
+            md_bg_color: get_color_from_hex('#1f51ff')
+            markup : True
+
+        MDFloatLayout:
+            MDFillRoundFlatIconButton:
+                id: camera_button
+                icon:'camera'
+                text: "[color=7df99f][b]CAMERA[/b][/color]"
+                font_size: '16dp'
+                pos_hint: {'center_x':0.5,'center_y':0.55}
+                md_bg_color: get_color_from_hex('#1f51ff')
+                markup:True
+                on_press:
+                    root.manager.transition.direction = 'left'
+                    root.manager.current = "screen_2"
+            MDFillRoundFlatIconButton:
+                id: data_button
+                icon:'database'
+                text: "[color=7df99f][b]DATA[/b][/color]"
+                font_size: '16dp'
+                md_bg_color: get_color_from_hex('#1f51ff')
+                pos_hint: {'center_x':0.5,'center_y':0.45}
+                markup:True
+
+        MDToolbar:
+            md_bg_color: get_color_from_hex('#ffffff')
+
+
+##: import get_color_from_hex kivy.utils.get_color_from_hex
+
+
+<Screen2>:
+    name:"screen_2"
+    
+    MDFloatLayout:
+        MDFloatingActionButton:
+            icon:'camera'
+            icon_size: '20sp'
+            text_color:get_color_from_hex('#000000')
+            pos_hint:{'center_x': .5,'center_y':.2}
+            on_press:
+                root.manager.transition.direction='right'
+                root.manager.current = "screen_1"
+        MDIconButton:
+            icon:'image-album'
+            #md_bg_color: get_color_from_hex('#7df99f')
+            #icon_color: get_color_from_hex('#7df99f')
+            pos_hint:{'center_x': .15,'center_y':.12}
+
+        MDIconButton:
+            icon:'camera-flip-outline'
+            #md_icon_color:get_color_from_hex('#1f51ff')
+            pos_hint:{'center_x': .85,'center_y':.12}
+            #icon_color:get_color_from_hex('#1f51ff')
+            user_font_size: dp(25)
+            #text_color:get_color_from_hex('#1f51ff')
+            on_press:
+                root.manager.transition.direction='left'
+                root.manager.current = "screen_3"
+        MDFlatButton:
+            text:'[color=#00ffcc]CAMERA[/color]'
+            font_size:'14dp'
+            size_hint:(.05,.05)
+            pos_hint:{'center_x': .35,'center_y':.05}
+            markup:True
+
+        #MDFillRoundFlatButton:
+        #
+        #
+        #    text:'[color=#7df99f]CAMERA[/color]'
+        #    text_color: get_color_from_hex('#1f51ff')
+        #    pos_hint:{'center_x': .5,'center_y':.6}
+        #    md_bg_color: get_color_from_hex('#1f51ff')
+        #    markup:True
+        MDFlatButton:
+            text:'[color=#00ffcc]VIDEO[/color]'
+            font_size:'14dp'
+            size_hint:(.06,.05)
+            pos_hint:{'center_x': .65,'center_y':.05}
+            #md_bg_color: get_color_from_hex('#1f51ff')
+            markup:True
+        #MDFillRoundFlatButton:
+        #
+        #    text:'[color=#7df99f]VIDEO[/color]'
+        #    #md_bg_color: get_color_from_hex('#1f51ff')
+        #    pos_hint:{'center_x': .5,'center_y':.7}
+        #    markup:True
+
+
+
+
+
+
+
+
+
+
+##: import get_color_from_hex kivy.utils.get_color_from_hex
+
+<Screen3>:
+    
+    name:"screen_3"
+    MDBoxLayout:
+        orientation:'vertical'
+        MDToolbar:
+            id : toolbar
+            title: "[color=7df99f][i]Files[/i][/color]"
+            font_size: '18dp'
+            right_action_items:[["dots-vertical",lambda x: app.dropdown.open()]]
+            theme_text_color: 'Custom'
+            md_bg_color: get_color_from_hex('#1f51ff')
+            markup : True
+        MDBottomNavigation:
+            md_bg_color: get_color_from_hex('#ffffff')
+            MDBottomNavigationItem:
+                name:'Screen31'
+                text:'Images'
+                icon: 'image'
+                on_tab_press:
+                    root.manager.current = "screen_2"
+            MDBottomNavigationItem:
+                name:'Screen32'
+                text:'Videos'
+                icon:'video'
+            MDBottomNavigationItem:
+                name:'Screen33'
+                text:'Documents'
+                icon: 'file'

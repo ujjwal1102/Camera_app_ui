@@ -1,0 +1,182 @@
+#: import get_color_from_hex kivy.utils.get_color_from_hex
+#: import Camera kivy.uix.camera
+#: import CameraBase kivy.core.camera.CameraBase
+#: import MDBoxLayout kivymd.uix.boxlayout.MDBoxLayout
+#: import Window kivy.core.window.Window 
+#: import gch kivy.utils.get_color_from_hex
+#: import Snackbar kivymd.uix.snackbar.Snackbar 
+##: import MDToggleButton kivymd.uix.behaviors.toggle_behavior.MDToggleButton
+   
+
+##: import dp kivy.metrices.dp
+
+<Screen2>:
+    on_enter: root.capture()
+
+    MDFloatLayout:
+        id: for_widgets
+        #orientation: 'vertical'
+
+        canvas:
+            Color:
+                rgba: app.theme_cls.primary_color
+
+            #Rectangle:
+            #
+            #    pos: self.pos
+            #    size: self.size
+
+        #orientation: 'vertical'
+        #size_hint: 0.5,0.5
+        #size : self.minimum_size
+        #pos_hint:{'center_x': .5,'center_y':.2}
+        
+        #orientation: 'horizontal'
+        #Camera:
+        #    id: cam
+        #    play:True
+        #    resolution:(220,640)
+    
+      
+        #MDFloatLayout:    
+
+        MDFloatingActionButton:
+            id:camera_icon_button
+            icon:'camera'
+            icon_size: '20sp'
+            text_color:get_color_from_hex('#000000')
+            pos_hint:{'center_x': .5,'center_y':.2}
+            
+            on_press:
+
+                #root.manager.transition.direction='right'
+                root.capture_button()
+            
+            on_release: root.show_toast()
+                
+                #Snackbar(text='Saved',snackbar_x='10dp',snackbar_y='10dp',size_hint_x=(Window.width - (dp(10)*2)) / Window.width,duration=0.5).open()
+
+
+
+        MDIconButton:
+            icon:'image-album'
+            #md_bg_color: get_color_from_hex('#7df99f')
+            #icon_color: get_color_from_hex('#7df99f')
+            pos_hint:{'center_x': .15,'center_y':.12} 
+            on_press:
+                #root.manager.transition.direction='left'
+                root.manager.current = "screen_3"
+        
+        MDIconButton:
+            
+            icon:'camera-flip-outline'
+            #md_icon_color:get_color_from_hex('#1f51ff')
+            pos_hint:{'center_x': .85,'center_y':.12}
+            #icon_color:get_color_from_hex('#1f51ff')
+            user_font_size: dp(25)
+            #text_color:get_color_from_hex('#1f51ff')
+            on_press:
+                #root.manager.transition.direction='right'
+                root.manager.current = "screen_1"
+            
+        
+            #pos_hint:{'center_x': .85,'center_y':0.05}
+        
+        MDStackLayout:
+
+            adaptive_height:True
+            #adaptive_width:False
+            size_hint_x: 0.9
+            width: .7
+
+
+            #pos_hint:{'center_x': .5,'center_y':.05} 
+
+            MyToggleButton:
+
+                text: "VIDEO"
+                #pos_hint:{'center_x': .45,'center_y':.1} 
+                size:0.25,0.25
+
+            MyToggleButton:
+
+                text: "PHOTO"
+                #pos_hint:{'center_x': .65,'center_y':.1}
+                size:0.25,0.25
+            
+
+
+        #MDRaisedButton:
+#
+        #    id:camera_button
+        #    text:'[color=#00ffcc]CAMERA[/color]'
+        #    font_size:'14dp'
+        #    size_hint:(.05,.05)
+        #    #md_bg_color: gch('#444444')
+        #    pos_hint:{'center_x': .35,'center_y':0.05}
+        #    markup:True
+        #    on_press:
+        #        root.color(self)
+    #
+        #MDFillRoundFlatButton:
+#
+        #    id:camera_button
+        #    text:'[color=#7df99f]CAMERA[/color]'
+        #    #text_color: get_color_from_hex('#1f51ff')
+        #    pos_hint:{'center_x': .35,'center_y':0.05}
+        #    md_bg_color: get_color_from_hex('#1f51ff')
+        #    markup:True
+        #    on_press:root.color()
+
+
+        #MDFlatButton:
+        #    id:video_button
+        #    text:'[color=#00ffcc]VIDEO[/color]'
+        #    font_size:'14dp'
+        #    size_hint:(.06,.05)
+        #    pos_hint:{'center_x': .65,'center_y':.05}
+        #    md_bg_color: get_color_from_hex('#1f51ff')
+        #    markup:True
+        
+        #MDFillRoundFlatButton:
+#
+        #    id:video_button
+        #    text:'[color=#7df99f]VIDEO[/color]'
+        #    #md_bg_color: get_color_from_hex('#1f51ff')
+        #    pos_hint:{'center_x': .65,'center_y':0.05}
+        #    markup:True
+        #    #on_press:root.button_func()
+        
+        
+     
+
+    #MDChooseChip:
+    #    
+    #    MDChip:
+#
+    #        text: "PHOTO"
+    #        #color: .4470588235118, .1960787254902, 0, 1
+    #        icon: ""
+    #        pos_hint:{'center_x': .35,'center_y':0.05}
+    #        #on_release: root.callback_for_menu_items(self)
+    #        selected_chip_color: (.21176470535294, .098039627451, 1, 1)
+    #        on_press: root.capture()
+#
+    #    MDChip:
+#
+    #        text: "VIDEO"
+    #        #color: .9215686274509803, 0, 0, 1
+    #        icon: ""
+    #        pos_hint:{'center_x': .65,'center_y':0.05}
+    #        #on_release: root.callback_for_menu_items(self)
+    #        selected_chip_color: (.21176470535294, .098039627451, 1, 1)
+    #        
+    #        on_press: root.capture()
+    #
+    
+    
+
+
+
+
+

@@ -1,0 +1,49 @@
+#: import get_color_from_hex kivy.utils.get_color_from_hex
+
+
+<Screen1>:
+    
+
+    MDBoxLayout:
+        orientation:'vertical'
+        spacing:0
+        
+        MDToolbar:
+            title: "[color=7df99f][i]Detect Face[/i][/color]"
+            font_size: '18dp'
+            right_action_items:[["dots-vertical"]]
+            theme_text_color: 'Custom'
+            md_bg_color: get_color_from_hex('#1f51ff')
+            markup : True
+        
+        MDFloatLayout:
+
+            MDFillRoundFlatIconButton:
+                id: camera_button
+                icon:'camera'
+                text: "[color=7df99f][b]CAMERA[/b][/color]"
+                font_size: '16dp'
+                pos_hint: {'center_x':0.5,'center_y':0.55}
+                md_bg_color: get_color_from_hex('#1f51ff')
+                markup:True
+                on_press:
+                    
+                    root.manager.transition.direction = 'left'
+                    root.manager.current = "screen_2"   
+                    
+            MDFillRoundFlatIconButton:
+                id: data_button
+                icon:'database'
+                text: "[color=7df99f][b]DATA[/b][/color]"
+                font_size: '16dp'
+                md_bg_color: get_color_from_hex('#1f51ff')
+                pos_hint: {'center_x':0.5,'center_y':0.45}
+                markup:True
+                on_press:
+                    
+                    root.manager.transition.direction = 'left'
+                    root.manager.current = "screen_3"
+        
+        MDToolbar:
+            md_bg_color: get_color_from_hex('#ffffff')
+    

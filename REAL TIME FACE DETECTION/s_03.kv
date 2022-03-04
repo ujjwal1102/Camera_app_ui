@@ -1,0 +1,31 @@
+#: import get_color_from_hex kivy.utils.get_color_from_hex
+
+   
+<Screen3>:
+    name:"screen_3"
+    MDBoxLayout:
+        orientation:'vertical'
+        MDToolbar:
+            id : toolbar
+            title: "[color=7df99f][i]Files[/i][/color]"
+            font_size: '18dp'
+            right_action_items:[["dots-vertical",lambda x: app.dropdown.open()]]
+            theme_text_color: 'Custom'
+            md_bg_color: get_color_from_hex('#1f51ff')
+            markup : True
+        MDBottomNavigation:
+            md_bg_color: get_color_from_hex('#ffffff')
+            MDBottomNavigationItem:
+                name:'Screen31'
+                text:'Images'
+                icon: 'image'
+                on_tab_press:
+                    root.manager.current = "screen_2"
+            MDBottomNavigationItem:
+                name:'Screen32'
+                text:'Videos'
+                icon:'video'
+            MDBottomNavigationItem:
+                name:'Screen33'
+                text:'Documents'
+                icon: 'file'

@@ -1,0 +1,100 @@
+#: import get_color_from_hex kivy.utils.get_color_from_hex
+##: import MDCardSwipe kivymd.uix.card.MDCardSwipe
+	
+
+<adding_videos>:
+    height: content.height
+    MDCardSwipeLayerBox:
+        # Content under the card.
+
+    MDCardSwipeFrontBox:
+
+        # Content of card.
+        OneLineListItem:
+            id: content
+            text: root.text
+            #_no_ripple_effect: True
+
+<adding_images>:
+
+    height: content.height
+
+    MDCardSwipeLayerBox:
+        # Content under the card.
+
+    MDCardSwipeFrontBox:
+
+        # Content of card.
+        OneLineListItem:
+            id: content
+            text: root.text
+            #_no_ripple_effect: True
+
+<Screen3>:
+    on_enter: root.add_image_layout(),root.add_videos_layout()
+    
+    MDBoxLayout:
+        orientation:'vertical'
+
+        MDToolbar:
+
+            title: "[color=7df99f][i]Files[/i][/color]"
+            font_size: '18dp'
+            #right_action_items:[["dots-vertical",lambda x: root.dropdown.open(x)]]
+            stheme_text_color: 'Custom'
+            md_bg_color: get_color_from_hex('#1f51ff')
+            markup : True
+            #MDFloatLayout:
+
+            left_action_items:[["arrow-left",lambda x : x]]
+
+            MDFloatLayout:  
+
+                MDIconButton:
+                    id : toolbar
+                    icon:'dots-vertical'
+                    
+                    icon_size: '20sp'
+                    md_bg_color: get_color_from_hex('#1f51ff')
+                    theme_text_color: 'Custom'
+                    text_color:get_color_from_hex('#7df99f')
+                    pos_hint: {"center_x": 0.87,"center_y": 0.5}
+                    on_press: root.d_down().dropdown.open()
+            
+        
+        MDBottomNavigation:
+            md_bg_color: get_color_from_hex('#ffffff')
+            
+            MDBottomNavigationItem:
+                name:'Screen31'
+                text:'Images'
+                icon: 'image'
+                
+                
+                MDBoxLayout:
+                    ScrollView:
+                        #scroll_timeout : 100
+                        MDList:
+                            id: md_list_of_images
+
+
+            MDBottomNavigationItem:
+                name:'Screen32'
+                text:'Videos'
+                icon:'video'
+                
+                MDBoxLayout: 
+                    ScrollView:
+                        #scroll_timeout : 100
+                        MDList:
+                            id: md_list_of_videos
+
+            MDBottomNavigationItem:
+                name:'Screen33'
+                text:'Documents'
+                icon: 'file'
+                on_tab_press:
+                    #root.manager.transition.direction='right'
+                    root.manager.current = "screen_2"
+
+
